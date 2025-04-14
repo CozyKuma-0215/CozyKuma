@@ -1,7 +1,6 @@
 {
   "name": "CozyKuma - 감성 음악 힐링 공간",
   "short_name": "CozyKuma",
-  "description": "CozyKuma는 감성을 위한 힐링 음악과 영감을 주는 공간입니다. 자연, 비, 숲, 피아노 사운드로 휴식을 경험하세요.",
   "start_url": "/CozyKuma/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -16,11 +15,15 @@
       "src": "/CozyKuma/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "/CozyKuma/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
-  "lang": "ko",
   "scope": "/CozyKuma/",
   "orientation": "portrait-primary",
-  "categories": ["music", "meditation", "relaxation", "soundscape"],
-  "prefer_related_applications": false
+  "lang": "ko"
 }
