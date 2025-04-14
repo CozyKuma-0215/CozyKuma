@@ -3,55 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CozyKuma: 감성 음악 힐링 공간</title>
-  <meta name="theme-color" content="#f2f2f2" />
-  <meta property="og:title" content="CozyKuma 힐링 음악 공간" />
-  <meta property="og:description" content="AI가 매일 추천하는 감성 음악과 썸네일을 만나보세요 🎵" />
-  <meta property="og:image" content="icon-512.png" />
+  <title>CozyKuma</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="icon-192.png" />
-  <link rel="apple-touch-icon" href="icon-512.png" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta property="og:title" content="CozyKuma: 감성 음악 힐링 공간" />
+  <meta property="og:description" content="자연 속에서 듣는 힐링 사운드, 숲속의 고요함과 함께하는 피아노 선율" />
+  <meta property="og:image" content="https://cozykuma-0215.github.io/CozyKuma/icon-512.png" />
+  <meta property="og:url" content="https://cozykuma-0215.github.io/CozyKuma/" />
+  <meta name="twitter:card" content="summary_large_image" />
   <style>
     body {
-      font-family: 'Helvetica Neue', sans-serif;
-      margin: 0;
-      background: #fefefe;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 3vh 4vw;
+      font-family: 'Segoe UI', sans-serif;
       text-align: center;
+      background-color: #f7f7f7;
+      padding: 5vh 2vw;
     }
     h1 {
-      font-size: 1.8em;
-      margin-top: 40px;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
     }
     p {
-      font-size: 1.1em;
-      margin-bottom: 24px;
+      font-size: 1rem;
+      color: #444;
     }
     button {
-      background: #7aa9ff;
+      display: block;
+      width: 80%;
+      max-width: 300px;
+      margin: 1rem auto;
+      padding: 0.75rem;
+      font-size: 1rem;
+      background-color: #4285f4;
+      color: white;
       border: none;
       border-radius: 8px;
-      padding: 12px 20px;
-      font-size: 1em;
-      color: white;
-      margin: 12px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: background 0.2s;
     }
     button:hover {
-      background: #5d8fff;
-    }
-    .section {
-      margin-top: 30px;
-      width: 100%;
-      max-width: 500px;
-      border-top: 1px solid #eee;
-      padding-top: 20px;
+      background-color: #3367d6;
     }
   </style>
 </head>
@@ -59,22 +51,37 @@
   <h1>🎵 CozyKuma: 감성 음악 힐링 공간 🎵</h1>
   <p>이 페이지를 홈 화면에 추가하면 앱처럼 실행됩니다 📱</p>
 
-  <div class="section">
-    <button onclick="alert('AI 프롬프트가 생성되었습니다!')">📌 오늘의 프롬프트 보기</button>
-    <button onclick="alert('유튜브 가로영상용 데이터 시트 열람')">🖥️ 유튜브 가로영상용 보기</button>
-    <button onclick="alert('인스타/틱톡 숏츠용 보기')">📱 숏츠용 보기</button>
-    <button onclick="alert('프롬프트 저장소 열람')">📚 프롬프트 라이브러리</button>
-    <button onclick="alert('음악 프롬프트 추천 보기')">🎵 음악 프롬프트 보기</button>
-    <button onclick="alert('폰트 & 해시태그 추천 보기')">🖋️ 폰트 + 해시태그 추천</button>
-  </div>
+  <button onclick="showTodayPrompt()">📌 오늘의 프롬프트 보기</button>
+  <button onclick="showMusicPrompt()">🎵 음악 프롬프트 보기</button>
+  <button onclick="showFontHashtag()">🖋️ 폰트 + 해시태그 추천</button>
 
   <script>
+    function showTodayPrompt() {
+      alert(`📌 오늘의 프롬프트
+
+주제: 봄날의 따뜻한 아침
+분위기: 잔잔함, 평화로움
+영상: 새소리와 빛나는 나무숲
+음악: 힐링 피아노 + 자연음`);
+    }
+
+    function showMusicPrompt() {
+      alert(`🎵 음악 프롬프트
+
+Calm ambient sound with forest rain and light wind,
+deep emotional texture,
+perfect for meditation and sleep scenes.`);
+    }
+
+    function showFontHashtag() {
+      alert(`💡 추천 폰트: 나눔손글씨 펜, G마켓 산스
+🔤 해시태그: #감성음악 #자연사운드 #명상 #힐링음악 #잔잔한비`);
+    }
+
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('service-worker.js').then(() => {
-          console.log('✅ Service Worker Registered');
-        });
-      });
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('✅ Service Worker 등록됨:', reg.scope))
+        .catch(err => console.error('❌ 등록 실패:', err));
     }
   </script>
 </body>
