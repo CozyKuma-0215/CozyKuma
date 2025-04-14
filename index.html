@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CozyKuma</title>
+  <meta name="description" content="CozyKuma는 감성 음악과 자연 힐링을 위한 AI 자동화 콘텐츠 플랫폼입니다. 유튜브, 숏폼, 음악 프롬프트를 확인해보세요." />
+  <meta name="keywords" content="CozyKuma, 힐링 음악, 숲속, 피아노, 감성 프롬프트, 자동화, 자연, 명상, 수면 음악, 숏폼, 유튜브 영상" />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="icon-192.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -66,33 +68,32 @@
   <h1>🎵 CozyKuma: 감성 음악 힐링 공간 🎵</h1>
   <p>이 페이지를 홈 화면에 추가하면 앱처럼 실행됩니다 📱</p>
 
-  <button class="button" onclick="showPrompt('longform')">📺 가로 영상 프롬프트</button>
-  <button class="button" onclick="showPrompt('shorts')">🎞️ 숏폼 영상 프롬프트</button>
-  <button class="button" onclick="showPrompt('music')">🎵 음악 프롬프트</button>
-  <button class="button" onclick="showPrompt('fonttag')">🖋️ 폰트 + 해시태그 추천</button>
+  <button class="button" onclick="loadSheet('시트1')">📺 유튜브 가로영상 시트 보기</button>
+  <button class="button" onclick="loadSheet('시트2')">🎞️ 숏폼 영상 시트 보기</button>
+  <button class="button" onclick="loadSheet('시트3')">📚 프롬프트 저장소 보기</button>
+  <button class="button" onclick="loadSheet('시트4')">🎵 음악 프롬프트 보기</button>
 
-  <div id="output" class="content-box">여기에서 선택한 프롬프트 내용을 확인할 수 있습니다.</div>
+  <div id="output" class="content-box">스프레드시트에서 데이터를 불러오는 중입니다...</div>
 
   <script>
-    function showPrompt(type) {
-      let message = "";
-      switch (type) {
-        case "longform":
-          message = `📺 유튜브 가로영상 프롬프트\n\n주제: 고요한 봄 숲의 새벽\n장르: 힐링 피아노\n영상 프롬프트: sunrise forest, gentle birdsong, misty light in wide shot`;
-          break;
-        case "shorts":
-          message = `🎞️ 숏폼 프롬프트\n\n주제: 작은 새가 비를 피하는 순간\n장르: 자연음 + 로파이\n영상 프롬프트: vertical format, slow motion raindrop with bird`;
-          break;
-        case "music":
-          message = `🎵 음악 프롬프트\n\nmelancholy ambient sound with forest rain and distant thunder, emotional texture with warm piano`;
-          break;
-        case "fonttag":
-          message = `🖋️ 추천 폰트: 나눔손글씨 펜체\n🔤 해시태그: #힐링 #자연음악 #감성프롬프트 #CozyKuma #편안한순간`;
-          break;
-        default:
-          message = "⚠️ 알 수 없는 항목입니다.";
+    async function loadSheet(sheetName) {
+      const sheetId = "YOUR_PUBLIC_SHEET_ID"; // 👉 구글 시트 공개 공유 후 ID 삽입
+      const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=${sheetName}`;
+      try {
+        const res = await fetch(url);
+        const text = await res.text();
+        const json = JSON.parse(text.substr(47).slice(0, -2));
+        let table = "<table><tbody>";
+        const cols = json.table.cols.map(col => col.label);
+        table += `<tr>${cols.map(c => `<th>${c}</th>`).join('')}</tr>`;
+        json.table.rows.forEach(row => {
+          table += `<tr>${row.c.map(cell => `<td>${cell?.v || ""}</td>`).join('')}</tr>`;
+        });
+        table += "</tbody></table>";
+        document.getElementById("output").innerHTML = table;
+      } catch (err) {
+        document.getElementById("output").innerText = "❌ 데이터를 불러오지 못했습니다.";
       }
-      document.getElementById("output").textContent = message;
     }
 
     if ('serviceWorker' in navigator) {
