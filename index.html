@@ -77,7 +77,8 @@
 
   <script>
     async function loadSheet(sheetName) {
-      const sheetId = "YOUR_PUBLIC_SHEET_ID"; // 👉 구글 시트 공개 공유 후 ID 삽입
+      const sheetId = "1azPTl0FW4nRHlHlCitPtqETinN8OyTMwEu3cnEXpoVg
+"; // 👉 구글 시트 공개 공유 후 ID 삽입
       const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=${sheetName}`;
       try {
         const res = await fetch(url);
