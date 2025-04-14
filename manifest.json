@@ -1,10 +1,14 @@
 {
   "name": "CozyKuma - 감성 음악 힐링 공간",
   "short_name": "CozyKuma",
+  "description": "AI가 매일 추천하는 감성 음악과 썸네일을 만나보세요 🎵",
   "start_url": "/CozyKuma/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#f5f5f5",
+  "orientation": "portrait-primary",
+  "scope": "/CozyKuma/",
+  "lang": "ko",
   "icons": [
     {
       "src": "/CozyKuma/icon-192.png",
@@ -19,11 +23,7 @@
     {
       "src": "/CozyKuma/apple-touch-icon.png",
       "sizes": "180x180",
-      "type": "image/png",
-      "purpose": "any"
+      "type": "image/png"
     }
-  ],
-  "scope": "/CozyKuma/",
-  "orientation": "portrait-primary",
-  "lang": "ko"
+  ]
 }
