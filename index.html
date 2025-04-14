@@ -1,27 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CozyKuma</title>
 
-  <!-- 앱 설치용 PWA 세팅 -->
-  <link rel="manifest" href="/CozyKuma/manifest.json" />
-  <link rel="icon" href="/CozyKuma/icon-192.png" />
+  <!-- PWA 설정 -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon-192.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <meta name="theme-color" content="#ffffff" />
 
-  <!-- iOS 전용 -->
-  <link rel="apple-touch-icon" href="/CozyKuma/icon-192.png" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="CozyKuma" />
+  <!-- SNS 공유 (OpenGraph) -->
+  <meta property="og:title" content="CozyKuma: 감성 음악 힐링 공간" />
+  <meta property="og:description" content="자연 속에서 듣는 힐링 사운드, 숲속의 고요함과 함께하는 피아노 선율" />
+  <meta property="og:image" content="https://cozykuma-0215.github.io/CozyKuma/icon-512.png" />
+  <meta property="og:url" content="https://cozykuma-0215.github.io/CozyKuma/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js').then(reg => {
+        console.log("✅ Service Worker 등록 성공:", reg.scope);
+      }).catch(err => {
+        console.error("❌ 등록 실패:", err);
+      });
+    }
+  </script>
 </head>
 <body>
-  <h1 style="text-align:center; font-family:sans-serif; margin-top:20vh;">
-    🎵 CozyKuma: 감성 음악 힐링 공간 🎵
-  </h1>
-  <p style="text-align:center; font-family:sans-serif;">
-    이 페이지를 <strong>홈 화면에 추가</strong>하면 앱처럼 실행됩니다 📱
-  </p>
+  <h1 style="text-align:center; font-family:sans-serif; margin-top:20vh;">🎵 CozyKuma: 감성 음악 힐링 공간 🎵</h1>
+  <p style="text-align:center; font-family:sans-serif;">이 페이지를 홈 화면에 추가하면 앱처럼 실행됩니다 📱</p>
 </body>
 </html>
