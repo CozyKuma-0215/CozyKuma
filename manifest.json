@@ -1,11 +1,12 @@
 {
   "name": "CozyKuma",
   "short_name": "CozyKuma",
-  "start_url": ".",
+  "description": "감성 음악과 자연 힐링을 위한 CozyKuma PWA 앱",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#ffffff",
-  "description": "자연 속에서 듣는 감성 음악, 명상과 휴식을 위한 힐링 공간",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "icon-192.png",
@@ -21,7 +22,7 @@
       "src": "apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
